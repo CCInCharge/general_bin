@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [[ $# -ne 2 ]]
+then
+	echo "
+Usage: suffix_string [filename] [string] to suffix every line in [filename]
+with the given [string]"
+exit 1
+fi
+
+filename=$1
+string=$2
+
+cp $filename "$filename".bck
+
+while read -r line
+do
+	echo "${line}${string}"
+done < $filename > newfile
+
+mv newfile $filename
