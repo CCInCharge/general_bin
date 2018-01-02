@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [[ $# -ne 2 ]]
+then
+	echo "
+Usage: prettyjson [filename] to echo a formatted JSON representation of the
+given file.
+
+Output of this script is to stdout, which can be redirected"
+exit 1
+fi
+python -m json.tool "$1"
